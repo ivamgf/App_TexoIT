@@ -1,3 +1,74 @@
-<p>
-  form works!
-</p>
+<section>
+<div class="content-section implementation">
+  <h3 class="first">Register Items</h3>
+  <div class="ui-g ui-fluid">
+      <div class="ui-g-12 ui-md-5">
+        <h6>Item</h6>
+          <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+              <input type="text" pInputText placeholder="Item" maxlength="50" autoFocus="true" required>         
+          </div>
+      </div>
+  </div>
+
+  <div class="ui-g-12 ui-md-5">
+    <h6>Unidade</h6>
+      <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon"><i class="fa fa-balance-scale"></i></span>
+          <select name="unidades">
+            <option value="nd">--- Selecione a unidade ---</option>
+            <option value="litro">Litro</option>
+            <option value="quilograma">Quilograma</option>
+            <option value="unidade">Unidade</option>
+          </select>  
+      </div>
+  </div>
+  
+  <div class="ui-g-12 ui-md-5">
+    <h6>Quantidade</h6>
+      <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon"><i class="fa fa-boxes"></i></span>
+          <input type="number" pInputText placeholder="Quantidade" min="1" max="999">
+          <span class="ui-inputgroup-addon">lt</span>         
+      </div>
+  </div>  
+
+  <div class="ui-g-12 ui-md-5">
+    <h6>Preço</h6>
+      <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon"><strong>R$</strong></span>
+          <p-inputMask [(ngModel)]="val" mask="999999999,99" step="1" pInputText></p-inputMask>
+      </div>
+  </div>
+
+  <div class="ui-g-12 ui-md-5">
+    <h6>Produto Perecível?</h6>
+      <div class="ui-inputgroup">
+          <p-radioButton name="groupname" value="val1" label="Sim" [(ngModel)]="selectedValue"></p-radioButton>
+      </div>
+      <div class="ui-inputgroup">
+          <p-radioButton name="groupname" value="val2" label="Não" [(ngModel)]="selectedValue"></p-radioButton>
+      </div>
+      <div class="ui-inputgroup">          
+      </div>          
+  </div>
+
+  <div class="ui-g-12 ui-md-5 ui-lg-3">
+      <span>Data de Validade</span>
+      <p-inputMask mask="99/99/9999" [(ngModel)]="val3" placeholder="99/99/9999" slotChar="mm/dd/yyyy"></p-inputMask>
+  </div>
+
+  <div class="ui-g-12 ui-md-5 ui-lg-3">
+      <span>Data de Fabricação</span>
+      <p-inputMask mask="99/99/9999" [(ngModel)]="val3" placeholder="99/99/9999" slotChar="mm/dd/yyyy"></p-inputMask>
+  </div>
+
+  <div class="ui-g-12 ui-md-5 ui-lg-3">
+    <button pButton type="button" label="Salvar"></button>
+  </div>
+
+  <div class="ui-g-12 ui-md-5 ui-lg-3">
+    <button pButton type="button" label="Cancelar" class="ui-button-raised ui-button-danger"></button>
+  </div>   
+</div>   
+</section>

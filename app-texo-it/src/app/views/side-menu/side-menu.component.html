@@ -1,3 +1,9 @@
-<p>
-  side-menu works!
-</p>
+<section>   
+<div class="content-section implementation menu-style">
+    <h3 class="first">Menu</h3>
+    <p-menu [model]="items"></p-menu>       
+</div>
+<div class="content-section implementation menu-style-pop">
+    <p-splitButton icon="pi pi-bars" [model]="items_popup" styleClass="ui-button-secondary"></p-splitButton>
+</div>
+</section>

@@ -1,7 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputMaskModule } from 'primeng/inputmask';
+import { CheckboxModule } from 'primeng/checkbox';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { ButtonModule } from 'primeng/button';
 
 import { AccordionModule } from 'primeng/accordion';
 import { MenuItem } from 'primeng/api';
@@ -12,6 +17,9 @@ import { HomeComponent } from './views/pages/home/home.component';
 import { SideMenuComponent } from './views/side-menu/side-menu.component';
 import { FormComponent } from './views/pages/form/form.component';
 import { ListComponent } from './views/pages/list/list.component';
+import { MenuModule } from 'primeng/menu';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -26,7 +34,15 @@ import { ListComponent } from './views/pages/list/list.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CommonModule
+    CommonModule,
+    MenuModule,
+    SplitButtonModule,
+    InputTextModule,
+    FormsModule,
+    InputMaskModule,
+    CheckboxModule,
+    RadioButtonModule,
+    ButtonModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
