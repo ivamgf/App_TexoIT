@@ -1,19 +1,36 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { MenuModule } from 'primeng/menu';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+
 import { AppComponent } from './app.component';
 import { SideMenuComponent } from './views/side-menu/side-menu.component';
 describe('AppComponent', () => {
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        MenuModule
+        MenuModule,
+        SplitButtonModule,
+        BrowserAnimationsModule,
+        InputMaskModule,
+        InputTextModule,
+        TableModule,
+        RadioButtonModule
       ],
       declarations: [
         AppComponent,
         SideMenuComponent
       ],
+  schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
