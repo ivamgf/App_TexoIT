@@ -1,12 +1,14 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MenuModule } from 'primeng/menu';
 import { AppComponent } from './app.component';
 import { SideMenuComponent } from './views/side-menu/side-menu.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MenuModule
       ],
       declarations: [
         AppComponent,

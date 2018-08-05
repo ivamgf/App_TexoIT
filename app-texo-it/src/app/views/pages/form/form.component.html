@@ -24,11 +24,10 @@
       </div>      
   </div>
 
-  <div class="ui-g-12 ui-md-5">
-    <h6>Quantidade</h6>
+  <div class="ui-g-12 ui-md-6">
+    <h6 *ngIf="unidade == 'litro' || unidade == 'quilograma' || unidade == 'unidade'">Quantidade</h6>
       <div class="ui-inputgroup">
-          <span class="ui-inputgroup-addon"><i class="fa fa-boxes"></i></span>
-          <p-inputMask *ngIf="unidade !== 'litro' && unidade !== 'quilograma' && unidade !== 'unidade'" mask="999,999" slotChar="0"></p-inputMask>
+          <span *ngIf="unidade == 'litro' || unidade == 'quilograma' || unidade == 'unidade'" class="ui-inputgroup-addon"><i class="fa fa-boxes"></i></span>
           <p-inputMask *ngIf="unidade == 'litro'" mask="999,999" slotChar="0"></p-inputMask>
           <span class="ui-inputgroup-addon" *ngIf="unidade == 'litro'">lt</span>
           <p-inputMask *ngIf="unidade == 'quilograma'" mask="999,999" slotChar="0"></p-inputMask>
@@ -38,34 +37,42 @@
       </div>
   </div>
 
-  <div class="ui-g-12 ui-md-6">
+  <div class="ui-g-12 ui-md-12">
     <h6>Preço</h6>
       <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="fa fa-money-bill-alt"></i></span>
-          <p-inputMask [(ngModel)]="money" mask="$ 9,99" step="0.01" characterPattern="[0-9]" required></p-inputMask>
+          <p-inputMask [(ngModel)]="money" mask="R$ 99,99" step="0.01" characterPattern="[0-9]" required></p-inputMask>
       </div>
   </div>
-
+ 
   <div class="ui-g-12 ui-md-12">
-    <h6>Produto Perecível?</h6>
-    <p-radioButton name="groupname" value="val1" label="Sim" [(ngModel)]="selectedValue"></p-radioButton>
-    <p-radioButton name="groupname" value="val2" label="Não" [(ngModel)]="selectedValue"></p-radioButton>
+  <h6>Produto Perecível?</h6>
+    <div class="form-check-inline">
+      <label class="form-check-label" [ngClass]="{'active': perecivel}">
+        <input type="radio" class="form-check-input" name="option" (click)="dataValidade($event)" id="sim" autocomplete="on">Sim
+      </label>
+    </div>
+    <div class="form-check-inline">
+      <label class="form-check-label" [ngClass]="{'active': !perecivel}">
+        <input type="radio" class="form-check-input" name="option" (click)="dataValidade($event)" id="nao" autocomplete="off">Não
+      </label>
+    </div>
+  </div>
+
+  <div class="ui-g-12 ui-md-12 ui-lg-3" *ngIf='perecivel'>
+      <h6>Data de Validade</h6>
+      <div class="ui-inputgroup">
+      <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
+      <p-calendar [(ngModel)]="valid" placeholder="mm/dd/yyyy" dateFormat="dd.mm.yy" required></p-calendar>
+      </div>
   </div>
   
   <div class="ui-g-12 ui-md-12 ui-lg-3">
       <h6>Data de Fabricação</h6>
       <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
-      <p-calendar [(ngModel)]="value" placeholder="mm/dd/yyyy" [(ngModel)]="dateFab" dateFormat="dd.mm.yyyy"></p-calendar>   
+      <p-calendar [(ngModel)]="fabr" placeholder="mm/dd/yyyy" dateFormat="dd.mm.yy"></p-calendar>   
       </div>   
-  </div>
-
-  <div class="ui-g-12 ui-md-12 ui-lg-3">
-      <h6>Data de Validade</h6>
-      <div class="ui-inputgroup">
-      <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
-      <p-calendar [(ngModel)]="value" placeholder="mm/dd/yyyy" [(ngModel)]="dateFab" dateFormat="dd.mm.yyyy" required></p-calendar>
-      </div>
   </div>
 
   <div class="ui-g-12 ui-md-5 ui-lg-3">

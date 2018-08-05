@@ -27,7 +27,6 @@ export class SideMenuComponent implements OnInit {
       { label: 'Home', icon: 'fa fa-home', routerLink: ['/'] },
       { label: 'Novo', icon: 'fa fa-plus', routerLink: ['/form'] },
       { label: 'Listagem', icon: 'fa fa-list-ul', routerLink: ['/list'] }
-    ];    
-  }
-
+      ];
+    }
 }
