@@ -1,12 +1,12 @@
 <section>
-<div class="content-section implementation">
-  <h3 class="first">Register Items</h3>
+<div class="content-section implementation form-style">
+  <h3 class="first">Cadastro de Items</h3>
   <div class="ui-g ui-fluid">
       <div class="ui-g-12 ui-md-5">
         <h6>Item</h6>
           <div class="ui-inputgroup">
               <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-              <input type="text" pInputText placeholder="Item" maxlength="50" autoFocus="true" required>         
+              <input type="text" pInputText placeholder="Item" maxlength="50" autoFocus="true" required>
           </div>
       </div>
   </div>
@@ -15,52 +15,57 @@
     <h6>Unidade</h6>
       <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="fa fa-balance-scale"></i></span>
-          <select name="unidades">
-            <option value="nd">--- Selecione a unidade ---</option>
-            <option value="litro">Litro</option>
-            <option value="quilograma">Quilograma</option>
-            <option value="unidade">Unidade</option>
-          </select>  
-      </div>
+          <select name="unidades" [(ngModel)]="unidade">
+            <option value="nd" [selected]="unidade == 'nd'">--- Selecione ---</option>
+            <option value="litro" [selected]="unidade == 'litro'">Litro</option>
+            <option value="quilograma" [selected]="unidade == 'quilograma'">Quilograma</option>
+            <option value="unidade" [selected]="unidade == 'unidade'">Unidade</option>
+          </select>
+      </div>      
   </div>
-  
+
   <div class="ui-g-12 ui-md-5">
     <h6>Quantidade</h6>
       <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="fa fa-boxes"></i></span>
-          <input type="number" pInputText placeholder="Quantidade" min="1" max="999">
-          <span class="ui-inputgroup-addon">lt</span>         
+          <p-inputMask *ngIf="unidade !== 'litro' && unidade !== 'quilograma' && unidade !== 'unidade'" mask="999,999" slotChar="0"></p-inputMask>
+          <p-inputMask *ngIf="unidade == 'litro'" mask="999,999" slotChar="0"></p-inputMask>
+          <span class="ui-inputgroup-addon" *ngIf="unidade == 'litro'">lt</span>
+          <p-inputMask *ngIf="unidade == 'quilograma'" mask="999,999" slotChar="0"></p-inputMask>
+          <span class="ui-inputgroup-addon" *ngIf="unidade == 'quilograma'">kg</span>
+          <p-inputMask *ngIf="unidade == 'unidade'" mask="999" slotChar="0"></p-inputMask>     
+          <span class="ui-inputgroup-addon" *ngIf="unidade == 'unidade'">un</span>     
       </div>
-  </div>  
+  </div>
 
-  <div class="ui-g-12 ui-md-5">
+  <div class="ui-g-12 ui-md-6">
     <h6>Preço</h6>
       <div class="ui-inputgroup">
-          <span class="ui-inputgroup-addon"><strong>R$</strong></span>
-          <p-inputMask [(ngModel)]="val" mask="999999999,99" step="1" pInputText></p-inputMask>
+          <span class="ui-inputgroup-addon"><i class="fa fa-money-bill-alt"></i></span>
+          <p-inputMask [(ngModel)]="money" mask="$ 9,99" step="0.01" characterPattern="[0-9]" required></p-inputMask>
       </div>
   </div>
 
-  <div class="ui-g-12 ui-md-5">
+  <div class="ui-g-12 ui-md-12">
     <h6>Produto Perecível?</h6>
+    <p-radioButton name="groupname" value="val1" label="Sim" [(ngModel)]="selectedValue"></p-radioButton>
+    <p-radioButton name="groupname" value="val2" label="Não" [(ngModel)]="selectedValue"></p-radioButton>
+  </div>
+  
+  <div class="ui-g-12 ui-md-12 ui-lg-3">
+      <h6>Data de Fabricação</h6>
       <div class="ui-inputgroup">
-          <p-radioButton name="groupname" value="val1" label="Sim" [(ngModel)]="selectedValue"></p-radioButton>
-      </div>
-      <div class="ui-inputgroup">
-          <p-radioButton name="groupname" value="val2" label="Não" [(ngModel)]="selectedValue"></p-radioButton>
-      </div>
-      <div class="ui-inputgroup">          
-      </div>          
+      <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
+      <p-calendar [(ngModel)]="value" placeholder="mm/dd/yyyy" [(ngModel)]="dateFab" dateFormat="dd.mm.yyyy"></p-calendar>   
+      </div>   
   </div>
 
-  <div class="ui-g-12 ui-md-5 ui-lg-3">
-      <span>Data de Validade</span>
-      <p-inputMask mask="99/99/9999" [(ngModel)]="val3" placeholder="99/99/9999" slotChar="mm/dd/yyyy"></p-inputMask>
-  </div>
-
-  <div class="ui-g-12 ui-md-5 ui-lg-3">
-      <span>Data de Fabricação</span>
-      <p-inputMask mask="99/99/9999" [(ngModel)]="val3" placeholder="99/99/9999" slotChar="mm/dd/yyyy"></p-inputMask>
+  <div class="ui-g-12 ui-md-12 ui-lg-3">
+      <h6>Data de Validade</h6>
+      <div class="ui-inputgroup">
+      <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
+      <p-calendar [(ngModel)]="value" placeholder="mm/dd/yyyy" [(ngModel)]="dateFab" dateFormat="dd.mm.yyyy" required></p-calendar>
+      </div>
   </div>
 
   <div class="ui-g-12 ui-md-5 ui-lg-3">
@@ -69,6 +74,6 @@
 
   <div class="ui-g-12 ui-md-5 ui-lg-3">
     <button pButton type="button" label="Cancelar" class="ui-button-raised ui-button-danger"></button>
-  </div>   
-</div>   
+  </div>
+</div>
 </section>

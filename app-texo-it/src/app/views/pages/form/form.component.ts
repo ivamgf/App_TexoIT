@@ -8,12 +8,15 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./form.component.sass']
 })
 export class FormComponent implements OnInit {
-val1: string = 'sim';
-val2: string = 'Não';
+val1: string;
+val2: string;
+value: Date;
+money: number;
 
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

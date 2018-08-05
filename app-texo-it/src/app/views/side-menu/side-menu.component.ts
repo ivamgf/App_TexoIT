@@ -15,19 +15,19 @@ export class SideMenuComponent implements OnInit {
 
   ngOnInit() {
     this.items = [{
-            label: 'Register',
+            label: 'Cadastro',
             items: [
-                {label: 'Home', icon: 'fa fa-plus', routerLink: ['/']},
-                {label: 'New', icon: 'fa fa-plus', routerLink: ['/form']},
-                {label: 'List', icon: 'fa fa-download', routerLink: ['/list']}
+                {label: 'Home', icon: 'fa fa-home', routerLink: ['/']},
+                {label: 'Novo', icon: 'fa fa-plus', routerLink: ['/form']},
+                {label: 'Listagem', icon: 'fa fa-list-ul', routerLink: ['/list']}
             ]
         }];
     this.items_popup = [
-      { label: 'Register' },
-      { label: 'Home', icon: 'fa fa-plus', routerLink: ['/'] },
-      { label: 'New', icon: 'fa fa-plus', routerLink: ['/form'] },
-      { label: 'List', icon: 'fa fa-download', routerLink: ['/list'] }
-    }];    
+      { label: 'Cadastro' },
+      { label: 'Home', icon: 'fa fa-home', routerLink: ['/'] },
+      { label: 'Novo', icon: 'fa fa-plus', routerLink: ['/form'] },
+      { label: 'Listagem', icon: 'fa fa-list-ul', routerLink: ['/list'] }
+    ];    
   }
 
 }
