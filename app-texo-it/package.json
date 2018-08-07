@@ -28,6 +28,7 @@
     "primeicons": "^1.0.0-beta.10",
     "primeng": "^6.1.0-rc.1",
     "rxjs": "^6.0.0",
+    "ts-money": "^0.4.4",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

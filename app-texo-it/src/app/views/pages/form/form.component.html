@@ -1,4 +1,6 @@
 <section>
+<p-toast [style]="{marginTop: '80px'}" class='message-error'></p-toast>
+
 <div class="content-section implementation form-style">
   <h3 class="first">Cadastro de Items</h3>
   <div class="ui-g ui-fluid">
@@ -41,7 +43,7 @@
     <h6>Preço</h6>
       <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="fa fa-money-bill-alt"></i></span>
-          <p-inputMask [(ngModel)]="money" mask="R$ 99,99" step="0.01" characterPattern="[0-9]" required></p-inputMask>
+          <input class='money-style' [(ngModel)]="moneyBrl" type="text" (blur)="formatMoney()" required>
       </div>
   </div>
  
@@ -63,7 +65,7 @@
       <h6>Data de Validade</h6>
       <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
-      <p-calendar [(ngModel)]="valid" placeholder="mm/dd/yyyy" dateFormat="dd.mm.yy" (click)="dataVenc()" required></p-calendar>
+      <p-calendar [(ngModel)]="valid" placeholder="mm/dd/yyyy" dateFormat="dd/mm/yy" (click)="dataVenc()" required></p-calendar>      
       </div>
   </div>
   
@@ -71,7 +73,7 @@
       <h6>Data de Fabricação</h6>
       <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
-      <p-calendar [(ngModel)]="fabr" placeholder="mm/dd/yyyy" dateFormat="dd.mm.yy"></p-calendar>   
+      <p-calendar [(ngModel)]="fabr" placeholder="mm/dd/yyyy" dateFormat="dd/mm/yy"></p-calendar>   
       </div>   
   </div>
 
