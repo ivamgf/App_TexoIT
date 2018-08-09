@@ -8,7 +8,7 @@
         <h6>Item</h6>
           <div class="ui-inputgroup">
               <span class="ui-inputgroup-addon"><i class="fa fa-list-alt"></i></span>
-              <input type="text" pInputText placeholder="Item" maxlength="50" autoFocus="true" required>
+              <input type="text" pInputText [(ngModel)]="item" placeholder="Item" maxlength="50" autoFocus="true" required>
           </div>
       </div>
   </div>
@@ -17,7 +17,7 @@
     <h6>Unidade</h6>
       <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="fa fa-balance-scale"></i></span>
-          <select name="unidades" [(ngModel)]="unidade">
+          <select name="unidades" [(ngModel)]="unidade" required>
             <option value="nd" [selected]="unidade == 'nd'">--- Selecione ---</option>
             <option value="litro" [selected]="unidade == 'litro'">Litro</option>
             <option value="quilograma" [selected]="unidade == 'quilograma'">Quilograma</option>
@@ -30,11 +30,11 @@
     <h6 *ngIf="unidade == 'litro' || unidade == 'quilograma' || unidade == 'unidade'">Quantidade</h6>
       <div class="ui-inputgroup">
           <span *ngIf="unidade == 'litro' || unidade == 'quilograma' || unidade == 'unidade'" class="ui-inputgroup-addon"><i class="fa fa-boxes"></i></span>
-          <p-inputMask *ngIf="unidade == 'litro'" mask="999,999" slotChar="0"></p-inputMask>
+          <p-inputMask *ngIf="unidade == 'litro'" mask="999,999?" slotChar="0"></p-inputMask>
           <span class="ui-inputgroup-addon" *ngIf="unidade == 'litro'">lt</span>
-          <p-inputMask *ngIf="unidade == 'quilograma'" mask="999,999" slotChar="0"></p-inputMask>
+          <p-inputMask *ngIf="unidade == 'quilograma'" mask="999,999?" slotChar="0"></p-inputMask>
           <span class="ui-inputgroup-addon" *ngIf="unidade == 'quilograma'">kg</span>
-          <p-inputMask *ngIf="unidade == 'unidade'" mask="999" slotChar="0"></p-inputMask>     
+          <p-inputMask *ngIf="unidade == 'unidade'" mask="999?" slotChar="0"></p-inputMask>     
           <span class="ui-inputgroup-addon" *ngIf="unidade == 'unidade'">un</span>     
       </div>
   </div>
@@ -56,7 +56,7 @@
     </div>
     <div class="form-check-inline">
       <label class="form-check-label" [ngClass]="{'active': !perecivel}">
-        <input type="radio" class="form-check-input" name="option" (click)="dataValidade($event)" id="nao" autocomplete="off">Não
+        <input type="radio" class="form-check-input" name="option" (click)="dataValidade($event)" id="nao" autocomplete="off" checked>Não
       </label>
     </div>
   </div>
@@ -65,24 +65,32 @@
       <h6>Data de Validade</h6>
       <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
-      <p-calendar [(ngModel)]="valid" placeholder="mm/dd/yyyy" dateFormat="dd/mm/yy" (click)="dataVenc()" required></p-calendar>      
+      <p-calendar [(ngModel)]="valid" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy" (click)="dataVenc()"></p-calendar>      
       </div>
   </div>
   
-  <div class="ui-g-12 ui-md-12 ui-lg-3">
+  <div class="ui-g-12 ui-md-12 ui-lg-3" *ngIf='perecivel'>
       <h6>Data de Fabricação</h6>
       <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
-      <p-calendar [(ngModel)]="fabr" placeholder="mm/dd/yyyy" dateFormat="dd/mm/yy"></p-calendar>   
+      <p-calendar [(ngModel)]="fabr" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy" (click)="dataFabrFunction()" required></p-calendar>   
+      </div>   
+  </div>
+
+  <div class="ui-g-12 ui-md-12 ui-lg-3" *ngIf='!perecivel'>
+      <h6>Data de Fabricação</h6>
+      <div class="ui-inputgroup">
+      <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
+      <p-calendar [(ngModel)]="fabr" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy"></p-calendar>   
       </div>   
   </div>
 
   <div class="ui-g-12 ui-md-5 ui-lg-3">
-    <button pButton type="button" label="Salvar"></button>
+    <button pButton type="button" label="Salvar" (click)="erroSalvar()"></button>
   </div>
 
   <div class="ui-g-12 ui-md-5 ui-lg-3">
-    <button pButton type="button" label="Cancelar" class="ui-button-raised ui-button-danger"></button>
+    <button pButton type="button" label="Cancelar" class="ui-button-raised ui-button-danger" routerLink="/list"></button>
   </div>
 </div>
 </section>

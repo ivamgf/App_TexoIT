@@ -41,12 +41,16 @@ export class FormComponent implements OnInit {
   
 val1: string;
 val2: string;
+public item: string;
+public unidade: string;
+public quantidade: number;
 public valid: any;
-public fabr: Date;
+public fabr: any;
 public now: any;
 public money: number;
 public moneyBrl: any;
 public dataValid: any;
+public dataFabr: any;
 public perecivel = false;
   constructor( 
     private messageService: MessageService 
@@ -60,6 +64,7 @@ public perecivel = false;
     this.perecivel = false;
     if (event.target.autocomplete === 'on') {
       this.perecivel = true;
+      this.fabr = '';
     }     
   }
   dataVenc() {
@@ -71,6 +76,12 @@ public perecivel = false;
       return this.showError();
       }     
   } 
+  dataFabrFunction() {
+    this.dataFabr = this.fabr.toLocaleDateString();
+    if ( this.dataFabr > this.dataValid ) {
+      return this.showErrorFabr();
+      }
+  }
   formatMoney() {
     Currencies.BRL = {
     symbol: "R$",
@@ -84,7 +95,43 @@ public perecivel = false;
     this.moneyBrl = 'R$' + '' + Money.fromDecimal(this.moneyBrl, Currencies.BRL);
   }
   showError() {
-      this.messageService.add({severity:'error', summary: 'Mensagem de Erro', detail:'Item com Prazo de Validade Vencido! Escolha outra data'});
+      this.messageService.add({severity:'error', summary: 'Mensagem de Erro', detail:'Item com Prazo de Validade Vencido! Escolha outra data!'});
       this.valid = ''; 
     }
+  showErrorFabr() {
+      this.messageService.add({severity:'error', summary: 'Mensagem de Erro', detail:'Data de fabricação não pode ser maior que data de validade!'});
+      this.fabr = ''; 
+    }
+  showErrorItem() {
+      this.messageService.add({severity:'error', summary: 'Mensagem de Erro', detail:'Item não preenchido, Favor cadastrar novo item!'});
+    }
+  showErrorUnidade() {
+      this.messageService.add({severity:'error', summary: 'Mensagem de Erro', detail:'Unidade não selecionada, Favor selecionar unidade de medida!'});
+    }
+  showErrorMoney() {
+      this.messageService.add({severity:'error', summary: 'Mensagem de Erro', detail:'Preço não preenchido, Favor digitar um preço para o item!'});
+    }
+  showErrorFabrNull() {
+    this.messageService.add({severity:'error', summary: 'Mensagem de Erro', detail:'Data de Fabricação não preenchida, Favor digitar uma data de fabricação!'});
+  }  
+  showErrorValid() {
+    this.messageService.add({severity:'error', summary: 'Mensagem de Erro', detail:'Data de Validade não preenchida, Favor digitar uma data de validade!'});
+  }      
+  erroSalvar() {
+    if ( !this.item ) {
+      this.showErrorItem();
+    }
+    if ( !this.unidade ) {
+      this.showErrorUnidade();
+    }
+    if ( !this.moneyBrl ) {
+      this.showErrorMoney();
+    }
+    if ( !this.fabr ) {
+      this.showErrorFabrNull();
+    }
+    if ( this.perecivel === true && !this.valid ) {
+      this.showErrorValid();
+    }
+  }    
 }
