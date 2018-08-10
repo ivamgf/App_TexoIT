@@ -4,6 +4,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/cor
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 import { InputMaskModule } from 'primeng/inputmask';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -50,7 +51,11 @@ import { ListComponent } from './views/pages/list/list.component';
     CalendarModule,
     TableModule,
     HttpClientModule,
-    ToastModule
+    ToastModule,
+    LocalStorageModule.withConfig({
+            prefix: 'App-Texo-It',
+            storageType: 'localStorage'
+        })
   ],
   schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],

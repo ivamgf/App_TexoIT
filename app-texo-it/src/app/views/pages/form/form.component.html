@@ -30,11 +30,11 @@
     <h6 *ngIf="unidade == 'litro' || unidade == 'quilograma' || unidade == 'unidade'">Quantidade</h6>
       <div class="ui-inputgroup">
           <span *ngIf="unidade == 'litro' || unidade == 'quilograma' || unidade == 'unidade'" class="ui-inputgroup-addon"><i class="fa fa-boxes"></i></span>
-          <p-inputMask *ngIf="unidade == 'litro'" mask="999,999?" slotChar="0"></p-inputMask>
+          <p-inputMask [(ngModel)]="quantidade" *ngIf="unidade == 'litro'" mask="9999,999?" slotChar="0"></p-inputMask>
           <span class="ui-inputgroup-addon" *ngIf="unidade == 'litro'">lt</span>
-          <p-inputMask *ngIf="unidade == 'quilograma'" mask="999,999?" slotChar="0"></p-inputMask>
+          <p-inputMask [(ngModel)]="quantidade" *ngIf="unidade == 'quilograma'" mask="9999,999?" slotChar="0"></p-inputMask>
           <span class="ui-inputgroup-addon" *ngIf="unidade == 'quilograma'">kg</span>
-          <p-inputMask *ngIf="unidade == 'unidade'" mask="999?" slotChar="0"></p-inputMask>     
+          <p-inputMask [(ngModel)]="quantidade" *ngIf="unidade == 'unidade'" mask="999?" slotChar="0"></p-inputMask>     
           <span class="ui-inputgroup-addon" *ngIf="unidade == 'unidade'">un</span>     
       </div>
   </div>
@@ -43,7 +43,7 @@
     <h6>Preço</h6>
       <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="fa fa-money-bill-alt"></i></span>
-          <input class='money-style' [(ngModel)]="moneyBrl" type="text" (blur)="formatMoney()" required>
+          <p-inputMask class='money-style' [(ngModel)]="moneyBrl" type="text" mask="R$ 999.999,99" required></p-inputMask>
       </div>
   </div>
  
@@ -51,12 +51,12 @@
   <h6>Produto Perecível?</h6>
     <div class="form-check-inline">
       <label class="form-check-label" [ngClass]="{'active': perecivel}">
-        <input type="radio" class="form-check-input" name="option" (click)="dataValidade($event)" id="sim" autocomplete="on">Sim
+        <input type="radio" [value]="1" [(ngModel)]="options" class="form-check-input" name="option" (click)="dataValidade($event)" id="sim" autocomplete="on">Sim
       </label>
     </div>
     <div class="form-check-inline">
       <label class="form-check-label" [ngClass]="{'active': !perecivel}">
-        <input type="radio" class="form-check-input" name="option" (click)="dataValidade($event)" id="nao" autocomplete="off" checked>Não
+        <input type="radio" [value]="2" [(ngModel)]="options" class="form-check-input" name="option" (click)="dataValidade($event)" id="nao" autocomplete="off" checked>Não
       </label>
     </div>
   </div>
@@ -86,7 +86,7 @@
   </div>
 
   <div class="ui-g-12 ui-md-5 ui-lg-3">
-    <button pButton type="button" label="Salvar" (click)="erroSalvar()"></button>
+    <button pButton type="button" label="Salvar" (click)="salvar()"></button>
   </div>
 
   <div class="ui-g-12 ui-md-5 ui-lg-3">

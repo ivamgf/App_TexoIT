@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormComponent } from './../form/form.component';
 
 @Component({
   selector: 'app-list',
@@ -15,7 +16,6 @@ lista: any[];
             { item: 'b', unid: 'Kg', quant: 83, preco: 'R$ 5,00', perecivel: 'sim', validade: '15/03/2020', fabricacao: '01/02/2009' },
             { item: 'c', unid: 'unid', quant: 38, preco: 'R$ 3,00', perecivel: 'nao', validade: '04/05/2019', fabricacao: '01/02/2009' }
     ];
-        console.log(this.lista);
   }
 
 }
