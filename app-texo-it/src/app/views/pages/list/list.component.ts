@@ -7,22 +7,21 @@ import { FormComponent } from './../form/form.component';
   styleUrls: ['./list.component.sass']
 })
 export class ListComponent implements OnInit {
-public lista;
+public lista: any[] = [];
 public listas: any[];
 public i;
-public listaItens;
+public listaItens: any[] = [];
   constructor() { }
 
   ngOnInit() {
-    this.lista = localStorage.getItem( 'Lista' );
+    this.lista = JSON.parse(localStorage.getItem( 'Lista' ));
     // this.listas.push(this.lista);
-    for (this.i = 0; this.i < this.lista.length; this.i++) {
-     this.listaItens = this.lista[this.i];
-    };
     console.log(this.lista);
-    console.log(this.listaItens);
-    this.listas = [
-           // { item: {{item}}, unid: {{unidade}}, quant: {{quantidade}}, preco: {{moneyBrl}}, validade: {{valid}}, fabricacao: {{fabr}} }
-    ];
+   /* let i;
+    for (i = 0; i < this.lista.length; i++) {
+    this.listaItens = this.lista[i];
+} */
+// console.log(this.listaItens);
+    
   }
 }

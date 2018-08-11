@@ -19,23 +19,23 @@
           <span class="ui-inputgroup-addon"><i class="fa fa-balance-scale"></i></span>
           <select name="unidades" [(ngModel)]="unidade" required>
             <option value="nd" [selected]="unidade == 'nd'">--- Selecione ---</option>
-            <option value="litro" [selected]="unidade == 'litro'">Litro</option>
-            <option value="quilograma" [selected]="unidade == 'quilograma'">Quilograma</option>
-            <option value="unidade" [selected]="unidade == 'unidade'">Unidade</option>
+            <option value="lt" [selected]="unidade == 'lt'">Litro</option>
+            <option value="kg" [selected]="unidade == 'kg'">Quilograma</option>
+            <option value="un" [selected]="unidade == 'un'">Unidade</option>
           </select>
       </div>      
   </div>
 
   <div class="ui-g-12 ui-md-6">
-    <h6 *ngIf="unidade == 'litro' || unidade == 'quilograma' || unidade == 'unidade'">Quantidade</h6>
+    <h6 *ngIf="unidade == 'lt' || unidade == 'kg' || unidade == 'un'">Quantidade</h6>
       <div class="ui-inputgroup">
-          <span *ngIf="unidade == 'litro' || unidade == 'quilograma' || unidade == 'unidade'" class="ui-inputgroup-addon"><i class="fa fa-boxes"></i></span>
-          <p-inputMask [(ngModel)]="quantidade" *ngIf="unidade == 'litro'" mask="9999,999?" slotChar="0"></p-inputMask>
-          <span class="ui-inputgroup-addon" *ngIf="unidade == 'litro'">lt</span>
-          <p-inputMask [(ngModel)]="quantidade" *ngIf="unidade == 'quilograma'" mask="9999,999?" slotChar="0"></p-inputMask>
-          <span class="ui-inputgroup-addon" *ngIf="unidade == 'quilograma'">kg</span>
-          <p-inputMask [(ngModel)]="quantidade" *ngIf="unidade == 'unidade'" mask="999?" slotChar="0"></p-inputMask>     
-          <span class="ui-inputgroup-addon" *ngIf="unidade == 'unidade'">un</span>     
+          <span *ngIf="unidade == 'lt' || unidade == 'kg' || unidade == 'un'" class="ui-inputgroup-addon"><i class="fa fa-boxes"></i></span>
+          <p-inputMask [(ngModel)]="quantidade" *ngIf="unidade == 'lt'" mask="9999,999?" slotChar="0"></p-inputMask>
+          <span class="ui-inputgroup-addon" *ngIf="unidade == 'lt'">lt</span>
+          <p-inputMask [(ngModel)]="quantidade" *ngIf="unidade == 'kg'" mask="9999,999?" slotChar="0"></p-inputMask>
+          <span class="ui-inputgroup-addon" *ngIf="unidade == 'kg'">kg</span>
+          <p-inputMask [(ngModel)]="quantidade" *ngIf="unidade == 'un'" mask="999?" slotChar="0"></p-inputMask>     
+          <span class="ui-inputgroup-addon" *ngIf="unidade == 'un'">un</span>     
       </div>
   </div>
 

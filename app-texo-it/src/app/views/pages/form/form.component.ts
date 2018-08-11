@@ -115,7 +115,7 @@ export class FormComponent implements OnInit {
     );
     }
     salvar() {
-      this.list.push({
+      /* this.list.push({
         'Item':this.item,
         'Unidade':this.unidade,
         'Quantidade':this.quantidade,
@@ -123,8 +123,22 @@ export class FormComponent implements OnInit {
         'Data de Validade':this.valid,
         'Data de Fabricação':this.fabr
       });
-    this.lists.push(this.list);
-    this.list = [];    
+      */
+     this.lists.push({
+      'Item':this.item,
+      'Unidade':this.unidade,
+      'Quantidade':this.quantidade,
+      'Preco':this.moneyBrl,
+      'Validade':this.valid,
+      'Fabricacao':this.fabr
+    });
+    this.item = '';
+    this.unidade = '';
+    this.quantidade = null;
+    this.moneyBrl = '';
+    this.valid = '';
+    this.fabr = '';
+   // this.list = [];  
     localStorage.setItem( 'Lista', JSON.stringify(this.lists) );
     this.erroSalvar();
     this.item = '';
@@ -136,7 +150,7 @@ export class FormComponent implements OnInit {
     this.clearValid(event);
     }
     erroSalvar() {
-      if ( !this.item ) {
+      /* if ( !this.item ) {
         this.showErrorItem();
       }
       if ( !this.unidade ) {
@@ -147,9 +161,9 @@ export class FormComponent implements OnInit {
       }
       if ( !this.fabr ) {
         this.showErrorFabrNull();
-      }
+      } 
       if ( this.perecivel === true && !this.valid ) {
         this.showErrorValid();
-      }
+      } */
     }
 }
