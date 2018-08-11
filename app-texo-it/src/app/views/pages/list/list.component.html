@@ -1,7 +1,7 @@
 <section>
 <div class="ui-md-12 table-style">
 <h3>Listagem</h3>
-  <p-table [value]="lista" class='table-style'>
+  <p-table [value]="listas" class='table-style'>
     <ng-template pTemplate="header">
         <tr class='font-title'>
             <th>Item</th>
@@ -15,15 +15,15 @@
             <th>Exclusão</th>
         </tr>        
     </ng-template>
-    <ng-template pTemplate="body" let-lista>
+    <ng-template pTemplate="body" let-listas>
         <tr class='font-table'>
-            <td>{{lista.item}}</td>
-            <td>{{lista.unid}}</td>
-            <td>{{lista.quant}}</td>
-            <td>{{lista.preco}}</td>
-            <td>{{lista.perecivel}}</td>
-            <td class='list-date'>{{lista.validade}}</td>
-            <td class='list-date'>{{lista.fabricacao}}</td>
+            <td>{{listas.item}}</td>
+            <td>{{listas.unid}}</td>
+            <td>{{listas.quant}}</td>
+            <td>{{listas.preco}}</td>
+            <td>{{listas.perecivel}}</td>
+            <td class='list-date'>{{listas.validade}}</td>
+            <td class='list-date'>{{listas.fabricacao}}</td>
             <td><a routerLink="/form">Editar</a></td>
             <td><a href=''>Excluir</a></td>
         </tr>

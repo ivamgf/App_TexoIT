@@ -32,7 +32,6 @@ export class FormComponent implements OnInit {
   public item: string;
   public list: any[] = [];
   public lists: any[] = [];
-  public key: number;
   public unidade: string;
   public quantidade: number;
   public valid: any;
@@ -44,6 +43,9 @@ export class FormComponent implements OnInit {
   public dataFabr: any;
   public perecivel = false;
   public options: any;
+  public i;
+  public lista: any[];
+  public listaItens;
   constructor(
     private messageService: MessageService
     ) { }
@@ -113,17 +115,17 @@ export class FormComponent implements OnInit {
     );
     }
     salvar() {
-      this.list.push(
-        this.item,
-        this.unidade,
-        this.quantidade,
-        this.moneyBrl,
-        this.valid,
-        this.fabr
-    );
+      this.list.push({
+        'Item':this.item,
+        'Unidade':this.unidade,
+        'Quantidade':this.quantidade,
+        'Preço':this.moneyBrl,
+        'Data de Validade':this.valid,
+        'Data de Fabricação':this.fabr
+      });
     this.lists.push(this.list);
-    this.list = [];
-    localStorage.setItem( 'Item', JSON.stringify(this.lists) );
+    this.list = [];    
+    localStorage.setItem( 'Lista', JSON.stringify(this.lists) );
     this.erroSalvar();
     this.item = '';
     this.unidade = '';

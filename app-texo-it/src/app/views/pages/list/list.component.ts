@@ -7,15 +7,22 @@ import { FormComponent } from './../form/form.component';
   styleUrls: ['./list.component.sass']
 })
 export class ListComponent implements OnInit {
-lista: any[];
+public lista;
+public listas: any[];
+public i;
+public listaItens;
   constructor() { }
 
   ngOnInit() {
-    this.lista = [
-            { item: 'a', unid: 'lt', quant: 51, preco: 'R$ 2,00', perecivel: 'sim', validade: '12/11/2019', fabricacao: '01/02/2009' },
-            { item: 'b', unid: 'Kg', quant: 83, preco: 'R$ 5,00', perecivel: 'sim', validade: '15/03/2020', fabricacao: '01/02/2009' },
-            { item: 'c', unid: 'unid', quant: 38, preco: 'R$ 3,00', perecivel: 'nao', validade: '04/05/2019', fabricacao: '01/02/2009' }
+    this.lista = localStorage.getItem( 'Lista' );
+    // this.listas.push(this.lista);
+    for (this.i = 0; this.i < this.lista.length; this.i++) {
+     this.listaItens = this.lista[this.i];
+    };
+    console.log(this.lista);
+    console.log(this.listaItens);
+    this.listas = [
+           // { item: {{item}}, unid: {{unidade}}, quant: {{quantidade}}, preco: {{moneyBrl}}, validade: {{valid}}, fabricacao: {{fabr}} }
     ];
   }
-
 }
