@@ -30,7 +30,6 @@ import { MessageService } from 'primeng/api';
 })
 export class FormComponent implements OnInit {
   public item: string;
-  public list: any[] = [];
   public lists: any[] = [];
   public unidade: string;
   public quantidade: number;
@@ -43,9 +42,6 @@ export class FormComponent implements OnInit {
   public dataFabr: any;
   public perecivel = false;
   public options: any;
-  public i;
-  public lista: any[];
-  public listaItens;
   constructor(
     private messageService: MessageService
     ) { }
@@ -91,7 +87,7 @@ export class FormComponent implements OnInit {
     }
     showErrorItem() {
     this.messageService.add(
-      { severity: 'error', summary: 'Mensagem de Erro', detail: 'Item não preenchido, Favor cadastrar novo item!' }
+      { severity: 'error', summary: 'Mensagem de Erro', detail: 'Item não preenchido, Favor preencher novo item!' }
       );
     }
     showErrorUnidade() {
@@ -115,16 +111,7 @@ export class FormComponent implements OnInit {
     );
     }
     salvar() {
-      /* this.list.push({
-        'Item':this.item,
-        'Unidade':this.unidade,
-        'Quantidade':this.quantidade,
-        'Preço':this.moneyBrl,
-        'Data de Validade':this.valid,
-        'Data de Fabricação':this.fabr
-      });
-      */
-     this.lists.push({
+      this.lists.push({
       'Item':this.item,
       'Unidade':this.unidade,
       'Quantidade':this.quantidade,
@@ -137,10 +124,8 @@ export class FormComponent implements OnInit {
     this.quantidade = null;
     this.moneyBrl = '';
     this.valid = '';
-    this.fabr = '';
-   // this.list = [];  
+    this.fabr = '';  
     localStorage.setItem( 'Lista', JSON.stringify(this.lists) );
-    this.erroSalvar();
     this.item = '';
     this.unidade = '';
     this.quantidade = null;
@@ -149,21 +134,29 @@ export class FormComponent implements OnInit {
     this.fabr = '';
     this.clearValid(event);
     }
-    erroSalvar() {
-      /* if ( !this.item ) {
+    erroItem() {
+       if ( !this.item ) {
         this.showErrorItem();
-      }
+      }      
+    }
+    erroUnidade() {
       if ( !this.unidade ) {
         this.showErrorUnidade();
       }
+    /*erroMoney() {
       if ( !this.moneyBrl ) {
         this.showErrorMoney();
-      }
+      } 
+    }
+    erroFabr() {
       if ( !this.fabr ) {
         this.showErrorFabrNull();
-      } 
+      }
+    }
+    erroValid() {
       if ( this.perecivel === true && !this.valid ) {
         this.showErrorValid();
-      } */
+      }
+    }  */
     }
 }

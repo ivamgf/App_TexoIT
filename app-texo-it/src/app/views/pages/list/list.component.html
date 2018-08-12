@@ -7,21 +7,26 @@
         <th>Item</th>
          <th>Quant.</th>
         <th>Preço</th>
-        <th>Validade</th>
-        <th>Fabr.</th>
-        <th>Edição</th>
-        <th>Exclusão</th>
+        <th>Datas de Fabr./Val.</th>
+        <th>Edição/Exclusão</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let i of lista" class='font-table'>
-        <td>{{i.Item}}</td>
+      <tr *ngFor="let i of lista, let a = index" class='font-table'>
+        <td>{{a + 1}} - {{i.Item}}</td>
         <td>{{i.Quantidade}}{{i.Unidade}}</td>
         <td>{{i.Preco}}</td>
-        <td>{{i.Validade | date: 'dd/mm/yyyy'}}</td>
-        <td>{{i.Fabricacao | date: 'dd/mm/yyyy'}}</td>
-        <td><button type="button" class="btn btn-link font-table" routerLink="/form">Editar</button></td>
-        <td><button type="button" class="btn btn-link font-table">Excluir</button></td>
+        <td>{{i.Fabricacao | date: 'dd/MM/yyyy' }}-{{i.Validade | date: 'dd/MM/yyyy'}}</td>
+        <td>
+        <div class='row'>
+            <div>
+            <button type="button" class="btn btn-link font-table" routerLink="/form" (click)='editaItem()'>Editar</button>
+            </div>
+            <div>
+            <button type="button" class="btn btn-link font-table">Excluir</button>
+            </div>
+        </div>
+        </td>
       </tr>
       <tr><td colspan='6'><button type="button" class="btn btn-primary button-style" routerLink="/form">Novo</button></td></tr>
     </tbody>

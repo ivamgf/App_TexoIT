@@ -8,7 +8,7 @@
         <h6>Item</h6>
           <div class="ui-inputgroup">
               <span class="ui-inputgroup-addon"><i class="fa fa-list-alt"></i></span>
-              <input type="text" pInputText [(ngModel)]="item" placeholder="Item" maxlength="50" autoFocus="true" required>
+              <input type="text" pInputText [(ngModel)]="item" placeholder="Item" maxlength="50" autoFocus="true" (blur)='erroItem()' required>
           </div>
       </div>
   </div>
@@ -17,7 +17,7 @@
     <h6>Unidade</h6>
       <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="fa fa-balance-scale"></i></span>
-          <select name="unidades" [(ngModel)]="unidade" required>
+          <select name="unidades" [(ngModel)]="unidade" (blur)='erroUnidade()' required>
             <option value="nd" [selected]="unidade == 'nd'">--- Selecione ---</option>
             <option value="lt" [selected]="unidade == 'lt'">Litro</option>
             <option value="kg" [selected]="unidade == 'kg'">Quilograma</option>
@@ -43,7 +43,7 @@
     <h6>Preço</h6>
       <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="fa fa-money-bill-alt"></i></span>
-          <p-inputMask class='money-style' [(ngModel)]="moneyBrl" type="text" mask="R$ 999.999,99" required></p-inputMask>
+          <p-inputMask class='money-style' [(ngModel)]="moneyBrl" type="text" mask="R$ 999.999,99" (blur)='erroMoney()' required></p-inputMask>
       </div>
   </div>
  
@@ -65,7 +65,7 @@
       <h6>Data de Validade</h6>
       <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
-      <p-calendar [(ngModel)]="valid" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy" (click)="dataVenc()"></p-calendar>      
+      <p-calendar [(ngModel)]="valid" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy" (click)="dataVenc()" (blur)='erroValid()'></p-calendar>      
       </div>
   </div>
   
@@ -73,7 +73,7 @@
       <h6>Data de Fabricação</h6>
       <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
-      <p-calendar [(ngModel)]="fabr" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy" (click)="dataFabrFunction()" required></p-calendar>   
+      <p-calendar [(ngModel)]="fabr" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy" (click)="dataFabrFunction()" (blur)='erroFabr()' required></p-calendar>   
       </div>   
   </div>
 
@@ -81,7 +81,7 @@
       <h6>Data de Fabricação</h6>
       <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
-      <p-calendar [(ngModel)]="fabr" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy"></p-calendar>   
+      <p-calendar [(ngModel)]="fabr" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy" (blur)='erroFabr()'></p-calendar>   
       </div>   
   </div>
 
