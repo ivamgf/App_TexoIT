@@ -17,6 +17,6 @@ public lista: any[] = [];
     }
   }
   editaItem() {
-    localStorage.setItem( 'Item', JSON.stringify(this.lista) );
+    localStorage.setItem( 'Item', JSON.stringify(this.lista[1]) );
   }
 }

@@ -65,7 +65,8 @@
       <h6>Data de Validade</h6>
       <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
-      <p-calendar [(ngModel)]="valid" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy" (click)="dataVenc()" (blur)='erroValid()'></p-calendar>      
+      <p-calendar *ngIf='!flagDataValid' [(ngModel)]="valid" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy" (click)="dataVenc()" (blur)='erroValid()'></p-calendar>
+      <p-inputMask *ngIf='flagDataValid' mask="9999/99/99" [(ngModel)]="valid" placeholder="99/99/9999" slotChar="dd/mm/yyyy"></p-inputMask>
       </div>
   </div>
   
@@ -73,7 +74,8 @@
       <h6>Data de Fabricação</h6>
       <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
-      <p-calendar [(ngModel)]="fabr" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy" (click)="dataFabrFunction()" (blur)='erroFabr()' required></p-calendar>   
+      <p-calendar *ngIf='!flagDataFabr' [(ngModel)]="fabr" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy" (click)="dataFabrFunction()" (blur)='erroFabr()' required></p-calendar>
+      <p-inputMask *ngIf='flagDataFabr' mask="9999/99/99" [(ngModel)]="fabr" placeholder="99/99/9999" slotChar="dd/mm/yyyy"></p-inputMask>
       </div>   
   </div>
 
@@ -81,10 +83,11 @@
       <h6>Data de Fabricação</h6>
       <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon"><i class="fa fa-calendar-alt"></i></span>
-      <p-calendar [(ngModel)]="fabr" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy" (blur)='erroFabr()'></p-calendar>   
+      <p-calendar *ngIf='!flagDataFabr' [(ngModel)]="fabr" placeholder="dd/mm/yyyy" dateFormat="dd/mm/yy" (blur)='erroFabr()'></p-calendar>   
+      <p-inputMask *ngIf='flagDataFabr' mask="9999/99/99" [(ngModel)]="fabr" placeholder="99/99/9999" slotChar="dd/mm/yyyy"></p-inputMask>
       </div>   
   </div>
-
+{{list}}
   <div class="ui-g-12 ui-md-5 ui-lg-3">
     <button pButton type="button" label="Salvar" (click)="salvar()"></button>
   </div>
